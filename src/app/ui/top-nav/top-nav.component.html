@@ -6,11 +6,35 @@
       <img src="assets/images/angularfirebase.png" width="30px" alt="Firestarter Angular4 Demo App"/> FireStarter
     </a>
   </div>
- 
+ <!-- Example single danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <i class="material-icons">favorite</i>
+  </button>
+  <div class="dropdown-menu">
+
+    <a class="dropdown-item" href="#">
+      <a class="nav-item" routerLink="/uploads">
+        <span class="badge badge-primary"> Enviar Fotos</span>
+        <i class="material-icons">add_a_photo</i>
+      </a>
+    </a>
+
+   <a class="dropdown-item" href="#">
+      <a class="nav-item" routerLink="/uploads">
+        <span class="badge badge-primary"> Meus Livros</span>
+        <i class="material-icons">extension</i>
+      </a>
+    </a>
+
+    
+  </div>
+</div>
+
 <!-- Default dropleft button -->
 <div class="btn-group dropleft">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="material-icons">view_module</i>
+    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="material-icons">face</i>
     </button>
     <div class="dropdown-menu">
         <div class="card text-center" style="width: 18rem;">
@@ -38,12 +62,13 @@
     <a class="nav-item" routerLink="/items">
       Realtime DB
     </a>
+    
     <a class="nav-item" routerLink="/uploads">
       File Uploads
     </a>
-  </div>
-
+  </div> 
 -->
+
 
 </nav>
 

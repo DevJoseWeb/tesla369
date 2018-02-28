@@ -1,3 +1,7 @@
+<audio controls autoplay>
+    <source src="horse.mp3" type="audio/mpeg">
+  </audio>
+
 <div *ngIf="currentUpload">
   <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
   Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
