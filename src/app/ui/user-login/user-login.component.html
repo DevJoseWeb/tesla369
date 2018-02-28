@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+              <div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+                <button (click)="signInWithGoogle()" class="btn btn-outline-danger">
+                  <i class="fa fa-google fa-lg"></i> Entrar com a conta Google
+                </button>
+                <user-form></user-form>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+            
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+  
+  
