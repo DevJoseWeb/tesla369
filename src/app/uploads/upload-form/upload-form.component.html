@@ -1,35 +1,24 @@
-<audio controls autoplay>
-    <source src="horse.mp3" type="audio/mpeg">
-  </audio>
-
-<div *ngIf="currentUpload">
-  <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
-</div>
-
+<audio controls autoplay="true" src="https://firebasestorage.googleapis.com/v0/b/livro-x.appspot.com/o/mp3%2F369.mp3?alt=media&token=fb4ae655-7811-48c0-9df5-41c7f3342b63"></audio>
 
 <div class="box">
-  <h3>Single File Upload</h3>
+   
+     <label>
+       <input type="file" class="button" (change)="detectFiles($event)" multiple>
+     </label>
+     <button class="button is-primary"
+       [disabled]="!selectedFiles"
+       (click)="uploadMulti()">
+       Upload Multiple
+     </button>
 
-  <label>
-    <input type="file" class="button" (change)="detectFiles($event)">
-  </label>
-  <button class="button is-primary"
-    [disabled]="!selectedFiles"
-    (click)="uploadSingle()">
-    Upload Single
-  </button>
+     <div *ngIf="currentUpload">  
+        <loading-spinner ></loading-spinner> 
+        <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}">
+        </progress>
+        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+      </div>
 
-  <hr>
+   </div>
 
-  <h3>Multiple File Upload</h3>
 
-  <label>
-    <input type="file" class="button" (change)="detectFiles($event)" multiple>
-  </label>
-  <button class="button is-primary"
-    [disabled]="!selectedFiles"
-    (click)="uploadMulti()">
-    Upload Multiple
-  </button>
-</div>
+    
