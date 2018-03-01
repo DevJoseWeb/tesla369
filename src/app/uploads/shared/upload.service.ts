@@ -7,14 +7,15 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UploadService {
 
-  basePath = 'uploads';
+  basePath = '';
   uploadsRef: AngularFireList<Upload>;
   uploads: Observable<Upload[]>;
-
+  showSpinner = true;
+ 
   constructor(private db: AngularFireDatabase) { }
 
   getUploads() {
-    this.uploads = this.db.list(this.basePath).snapshotChanges().map((actions) => {
+    this.uploads = this.db.list('uploads').snapshotChanges().map((actions) => {
       return actions.map((a) => {
         const data = a.payload.val();
         const $key = a.payload.key;
@@ -25,15 +26,20 @@ export class UploadService {
   }
 
   deleteUpload(upload: Upload) {
+    this.uploads.subscribe(() => this.showSpinner = true);
     this.deleteFileData(upload.$key)
     .then( () => {
       this.deleteFileStorage(upload.name);
+ 
     })
     .catch((error) => console.log(error));
   }
 
   // Executes the file uploading to firebase https://firebase.google.com/docs/storage/web/upload-files
   pushUpload(upload: Upload) {
+
+ 
+
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
 
@@ -41,6 +47,7 @@ export class UploadService {
       (snapshot: firebase.storage.UploadTaskSnapshot) =>  {
         // upload in progress
         const snap = snapshot;
+        
         upload.progress = (snap.bytesTransferred / snap.totalBytes) * 100
       },
       (error) => {

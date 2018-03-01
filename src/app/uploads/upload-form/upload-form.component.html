@@ -1,24 +1,37 @@
 <audio controls autoplay="true" src="https://firebasestorage.googleapis.com/v0/b/livro-x.appspot.com/o/mp3%2F369.mp3?alt=media&token=fb4ae655-7811-48c0-9df5-41c7f3342b63"></audio>
-
 <div class="box">
    
      <label>
-       <input type="file" class="button" (change)="detectFiles($event)" multiple>
+       <input type="file" class="btn btn-outline-warning" (change)="detectFiles($event)" multiple>
      </label>
-     <button class="button is-primary"
+     <button class="btn btn-outline-warning"
        [disabled]="!selectedFiles"
        (click)="uploadMulti()">
-       Upload Multiple
+       Enviar Vários
      </button>
 
-     <div *ngIf="currentUpload">  
-        <loading-spinner ></loading-spinner> 
-        <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}">
-        </progress>
-        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+      <div *ngIf="currentUpload">  
+           
+          <div class="bubblingG">
+              <span id="bubblingG_1">
+              </span>
+              <span id="bubblingG_2">
+              </span>
+              <span id="bubblingG_3">
+              </span>
+            </div>
+         
+            <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}">
+               
+         </progress>
+
+         <loading-spinner *ngIf="showSpinner"></loading-spinner>
+         <hr>
+         
+        <audio autoplay="true" src="https://firebasestorage.googleapis.com/v0/b/livro-x.appspot.com/o/mp3%2Ftone.mp3?alt=media&token=dc461ad9-bf86-4b93-afd4-5376d8634fed"></audio>
+       
+        <span class="badge badge-warning">Arquivo: {{currentUpload?.name}}</span>
+        <span class="badge badge-danger">{{currentUpload?.progress}}% Completo</span>
       </div>
 
    </div>
-
-
-    

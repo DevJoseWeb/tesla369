@@ -15,7 +15,7 @@
       <ng-template #authenticated>
         <div *ngIf="auth.user | async as user">
           Olá, {{ user.displayName }}
-          <img class="card-img-top" [src]="user.photoURL || 'https://api.adorable.io/avatars/109/fire.png'" width=50px>
+          <img class="rounded-circle" [src]="user.photoURL || 'https://api.adorable.io/avatars/109/fire.png'" width=50px>
           <button class="button" (click)="logout()">Sair</button>
         </div>
       </ng-template>
